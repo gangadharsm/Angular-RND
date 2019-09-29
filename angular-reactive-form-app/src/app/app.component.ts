@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Employee } from './core/class/Employee';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-reactive-form-app';
+  title = 'Employee Details App';
+  employeeInfo: Employee;
+  constructor() {
+    this.employeeInfo = new Employee();
+    this.employeeInfo.AddEmployeeName('Gangadhara', 'Sirigeri Mathda');
+  }
 }
