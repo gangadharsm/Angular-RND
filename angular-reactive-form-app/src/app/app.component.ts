@@ -11,6 +11,6 @@ export class AppComponent {
   employeeInfo: Employee;
   constructor() {
     this.employeeInfo = new Employee();
-    this.employeeInfo.AddEmployeeName('Gangadhara', 'Sirigeri Mathda');
+    this.employeeInfo.addEmployeeName('Gangadhara', 'Sirigeri Mathda');
   }
 }
