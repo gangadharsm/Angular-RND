@@ -1,8 +1,8 @@
-
-  <h3>SignUp </h3>
-  <form  [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+<mat-card>
+  <mat-card-title>SignUp</mat-card-title>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
-      <input matInput #email spellcheck="false" placeholder="Email" formControlName="email" />
+      <input matInput #email spellcheck="false"  placeholder="Email" formControlName="email" />
       <mat-error>
         {{ formErrors["email"] }}
       </mat-error>
@@ -15,37 +15,21 @@
     </mat-form-field>
     <div formGroupName="passwordsGroup">
       <mat-form-field>
-        <input [type]="hidePassword ? 'password' : 'text'"
-          matInput
-          spellcheck="false"
-          placeholder="Password"
+        <input [type]="hidePassword ? 'password' : 'text'" matInput spellcheck="false" placeholder="Password"
           formControlName="password">
-        <button mat-icon-button
-          tabindex="-1"
-          matSuffix
-          (click)="hidePassword = !hidePassword"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hidePassword">
+        <button mat-icon-button tabindex="-1" matSuffix (click)="hidePassword = !hidePassword"
+          [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
           <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
         <mat-error>
           {{ formErrors['password'] }}
         </mat-error>
       </mat-form-field>
-
       <mat-form-field>
-        <input [type]="hidePassword ? 'password' : 'text'"
-          matInput
-          spellcheck="false"
-          placeholder="Confirm Password"
-          [errorStateMatcher]="errorMatcher"
-          formControlName="confirmPassword">
-        <button mat-icon-button
-          tabindex="-1"
-          matSuffix
-          (click)="hidePassword = !hidePassword"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hidePassword">
+        <input [type]="hidePassword ? 'password' : 'text'" matInput spellcheck="false" placeholder="Confirm Password"
+          [errorStateMatcher]="errorMatcher" formControlName="confirmPassword">
+        <button mat-icon-button tabindex="-1" matSuffix (click)="hidePassword = !hidePassword"
+          [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
           <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
         <mat-error>
@@ -55,5 +39,6 @@
     </div>
     <button type="submit">signUp</button>
   </form>
+</mat-card>
 
 {{signupForm.value | json}}
