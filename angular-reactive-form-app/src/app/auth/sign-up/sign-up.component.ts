@@ -29,6 +29,22 @@ export class SignUpComponent extends FormComponentBase implements OnInit, AfterV
         maxlength: 'User name maximum length is 15.',
         pattern: 'User name minimum length 6, allowed characters letters, numbers only. No spaces.'
       },
+      password: {
+        required: 'Password is required.',
+        minlength: 'Password minimum length is 6.',
+        maxlength: 'Password maximum length is 15.',
+        pattern: 'Password minimum length 6, requires one letter, one number, one special character !@#$%^&* no spaces.'
+      },
+      confirmPassword: {
+        required: 'Confirm password is required.',
+        minlength: 'Confirm password minimum length is 6.',
+        maxlength: 'Confirm password maximum length is 15.',
+        pattern: 'Confirm password minimum length 6, requires one letter, one number, one special character !@#$%^&* no spaces.',
+        passwordsDoNotMatch: 'Passwords must match.'
+      },
+      passwordsGroup: {
+        passwordsDoNotMatch: 'Passwords must match.'
+      }
     };
 
     this.formErrors = {
@@ -50,17 +66,26 @@ export class SignUpComponent extends FormComponentBase implements OnInit, AfterV
 
   createSignupForm() {
     this.signupForm = this.formBuilder.group({
+      userName: ['', [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(15),
+        Validators.pattern('^[a-zA-Z0-9]*$')]],
       email: ['', [
         Validators.required,
         Validators.email]],
-        userName: ['', [
+      passwordsGroup: this.formBuilder.group({
+        password: ['', [
           Validators.required,
-          Validators.minLength(6),
           Validators.maxLength(15),
-          Validators.pattern('^[a-zA-Z0-9]*$')]],
+          Validators.pattern('^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$')]],
+        confirmPassword: ['', [
+          Validators.required,
+          Validators.maxLength(15),
+          Validators.pattern('^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$')]],
+      }, { validators: passwordsDoNotMatch })
     });
   }
-
 
   onSubmit() {
     console.log(this.signupForm.valid);
