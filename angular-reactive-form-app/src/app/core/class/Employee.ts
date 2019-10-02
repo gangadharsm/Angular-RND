@@ -1,16 +1,17 @@
 import { IEmployee } from '../interface/IEmployee';
 import { EmployeeName } from './Employee-name';
+import { IEmployeeName } from '../interface/IEmployee-name';
 
 export class Employee implements IEmployee {
 
-  public employeeName: EmployeeName;
+  public employeeName: IEmployeeName;
 
   constructor() {
-    this.employeeName = null;
+    this.employeeName =  new EmployeeName();
   }
 
-  public AddEmployeeName(firstName: string, lastName: string): void {
-    this.employeeName = new EmployeeName();
+  addEmployeeName(firstName: string, lastName: string): void {
+
     this.employeeName.firstName = firstName.trim();
     this.employeeName.lastName = lastName.trim();
     this.employeeName.fullName = `${firstName} ${lastName}`;
