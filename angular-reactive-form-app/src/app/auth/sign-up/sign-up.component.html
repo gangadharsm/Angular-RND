@@ -1,1 +1,19 @@
-<p>sign-up works!</p>
+
+  <h3>SignUp </h3>
+  <form  [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput #email spellcheck="false" placeholder="Email" formControlName="email" />
+      <mat-error>
+        {{ formErrors["email"] }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput spellcheck="false" placeholder="User name" formControlName="userName" />
+      <mat-error>
+        {{ formErrors["userName"] }}
+      </mat-error>
+    </mat-form-field>
+    <button type="submit">signUp</button>
+  </form>
+
+{{signupForm.value | json}}
