@@ -10,7 +10,6 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'signup',
-        pathMatch: 'full'
       },
       {
         path: 'signup',
